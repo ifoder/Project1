@@ -1,0 +1,43 @@
+<div class="container">
+  <div *ngIf="!resultPage; else result">
+    <div class="alert alert-info info">
+      <div class="info__title">{{ test.title }}</div>
+      <div class="info__questions">
+        <mat-icon>help</mat-icon> {{ count }} / {{ questionsLength }}
+      </div>
+      <div class="info__timer">
+        <mat-icon>alarm_on</mat-icon> {{ timeDisplay }}
+      </div>
+    </div>
+    <br />
+    <mat-card>
+      <mat-card-title>{{ question.question }}</mat-card-title>
+      <mat-card-actions>
+        <mat-radio-group
+          aria-labelledby="example-radio-group-label"
+          class="example-radio-group"
+        >
+          <mat-selection-list #answer [multiple]="false">
+            <mat-list-option
+              *ngFor="let answer of questionAnswers; let i; as: index"
+              [ngClass]="getClass(answer)"
+              (click)="onClick(answer)"
+            >
+              <mat-list-item role="listitem"
+                ><mat-radio-button [value]="i">{{
+                  answer.answer
+                }}</mat-radio-button></mat-list-item
+              >
+            </mat-list-option>
+          </mat-selection-list>
+        </mat-radio-group>
+      </mat-card-actions>
+    </mat-card>
+    <div class="progressbar">
+      <div *ngFor="let i of progress" [class]="i"></div>
+    </div>
+  </div>
+  <ng-template #result>
+    <result-page [score]="userScore" [progress]="progress"></result-page>
+  </ng-template>
+</div>

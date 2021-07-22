@@ -1,0 +1,27 @@
+﻿<div>
+  <mat-card class="result">
+    <mat-card-title>Results</mat-card-title>
+    <mat-card-subtitle> {{ test.title }}</mat-card-subtitle>
+    <h1>Congratulations! You've completed the test!</h1>
+    <div class="result__subtitle">
+      You scored {{ score.correct }} out of
+      {{ score.wrong + score.correct }} ({{ percentage }}%) questions correctly.
+    </div>
+    <div class="progressbar">
+      <div *ngFor="let i of progress" [class]="i"></div>
+    </div>
+    <div class="result__score">
+      {{ displayTitle }}
+    </div>
+
+    <div class="result__time">
+      {{ timeDisplay }}
+    </div>
+
+    <div class="result__back">
+      <button mat-raised-button color="primary" routerLink="/categories">
+        Return
+      </button>
+    </div>
+  </mat-card>
+</div>

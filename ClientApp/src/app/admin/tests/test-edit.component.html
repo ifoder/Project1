@@ -1,0 +1,141 @@
+<div class="header">Tests</div>
+<div class="action-buttons" *ngIf="!isEdit; else save">
+  <button mat-raised-button color="primary" (click)="clickAdd()">Add</button>
+  <button
+    mat-flat-button
+    color="accent"
+    [disabled]="!clickedRows.size"
+    (click)="clickEdit(clickedRows)"
+  >
+    Edit
+  </button>
+  <button
+    mat-flat-button
+    color="warn"
+    [disabled]="!clickedRows.size"
+    (click)="clickDelete(clickedRows)"
+  >
+    Delete
+  </button>
+  <span>*To change items, click on rows to select </span>
+</div>
+<ng-template #save>
+  <div class="action-buttons">
+    <button
+      mat-flat-button
+      color="accent"
+      [disabled]="!clickedRows.size"
+      (click)="clickSave(clickedRows)"
+    >
+      Save
+    </button>
+  </div>
+</ng-template>
+
+<table mat-table [dataSource]="tests" class="mat-elevation-z8 demo-table">
+  <!-- Position Column -->
+  <ng-container matColumnDef="position">
+    <th mat-header-cell *matHeaderCellDef>No.</th>
+    <td mat-cell *matCellDef="let element">
+      {{ element.id }}
+    </td>
+  </ng-container>
+
+  <!-- Category Column -->
+  <ng-container matColumnDef="category">
+    <th mat-header-cell *matHeaderCellDef>Categories.Id</th>
+    <td mat-cell *matCellDef="let element">
+      <mat-form-field appearance="fill" *ngIf="isEdit || newRows.has(element)">
+        <select matNativeControl [(ngModel)]="element.categoryId" name="car">
+          <option
+            *ngFor="let cat of categories"
+            [ngValue]="cat.id"
+            [selected]="element.categoryId === cat.id"
+          >
+            {{ cat.name }}
+          </option>
+        </select>
+      </mat-form-field>
+      <p *ngIf="!isEdit && !newRows.has(element)">
+        {{ element.categoryId }}
+      </p>
+    </td>
+  </ng-container>
+
+  <!-- title Column -->
+  <ng-container matColumnDef="title">
+    <th mat-header-cell *matHeaderCellDef>Title</th>
+    <td mat-cell *matCellDef="let element">
+      <mat-form-field
+        class="example-form-field"
+        appearance="fill"
+        *ngIf="isEdit"
+      >
+        <input matInput type="text" [(ngModel)]="element.title" />
+      </mat-form-field>
+      <div class="add" *ngIf="!isEdit && newRows.has(element)">
+        <mat-form-field class="example-form-field" appearance="fill">
+          <input matInput type="text" [(ngModel)]="element.title" />
+        </mat-form-field>
+      </div>
+
+      <p *ngIf="!isEdit && !newRows.has(element)">
+        {{ element.title }}
+      </p>
+    </td>
+  </ng-container>
+
+  <!-- Description Column -->
+  <ng-container matColumnDef="description">
+    <th mat-header-cell *matHeaderCellDef>Description</th>
+    <td mat-cell *matCellDef="let element">
+      <mat-form-field
+        class="example-form-field"
+        appearance="fill"
+        *ngIf="isEdit"
+      >
+        <input matInput type="text" [(ngModel)]="element.description" />
+      </mat-form-field>
+      <div class="add" *ngIf="!isEdit && newRows.has(element)">
+        <mat-form-field class="example-form-field" appearance="fill">
+          <input matInput type="text" [(ngModel)]="element.description" />
+        </mat-form-field>
+        <button
+          mat-flat-button
+          color="accent"
+          [disabled]="!clickedRows.size"
+          (click)="onRowSave(element.id)"
+        >
+          Save
+        </button>
+      </div>
+
+      <p *ngIf="!isEdit && !newRows.has(element)">
+        {{ element.description }}
+      </p>
+    </td>
+  </ng-container>
+
+  <!-- Question Column -->
+  <ng-container matColumnDef="questions">
+    <th mat-header-cell *matHeaderCellDef></th>
+    <td mat-cell *matCellDef="let element">
+      <button
+        mat-flat-button
+        *ngIf="!isEdit && !newRows.has(element)"
+        color="primary"
+        (click)="change(element)"
+      >
+        Questions
+      </button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr
+    mat-row
+    (click)="clickedRows.add(row)"
+    [class.demo-row-is-clicked]="clickedRows.has(row)"
+    *matRowDef="let row; columns: displayedColumns"
+  ></tr>
+</table>

@@ -1,0 +1,81 @@
+.demo-table {
+  width: 100%;
+}
+
+.mat-column-demo-position {
+  width: 32px;
+  border-right: 1px solid currentColor;
+  padding-right: 24px;
+  text-align: center;
+}
+
+.mat-column-demo-name {
+  padding-left: 16px;
+  font-size: 20px;
+}
+
+.mat-column-demo-weight {
+  font-style: italic;
+}
+
+.mat-column-demo-symbol {
+  width: 32px;
+  text-align: center;
+  font-weight: bold;
+}
+.demo-table {
+  width: 100%;
+}
+
+.mat-row .mat-cell {
+  border-bottom: 1px solid transparent;
+  border-top: 1px solid transparent;
+  cursor: pointer;
+}
+
+.mat-row:hover .mat-cell {
+  border-color: currentColor;
+}
+
+.demo-row-is-clicked {
+  font-weight: bold;
+}
+
+.action-buttons {
+  display: flex;
+  margin: 0 0 10px 10px;
+  align-items: center;
+  button {
+    width: 100px;
+    margin-right: 10px;
+  }
+}
+
+.header {
+  display: flex;
+  font-size: 32px;
+  align-items: center;
+  margin: 20px 4px 25px 20px;
+}
+
+.add {
+  display: inline-flex;
+  align-items: center;
+  button {
+    margin-bottom: 1.34375em;
+    margin-left: 5px;
+  }
+}
+.example-button-toggle-label {
+  display: inline-block;
+  margin: 16px;
+}
+.example-input-label,
+.example-add-tab-button,
+.example-delete-tab-button {
+  margin: 8px;
+}
+
+.tab__container {
+  margin-top: 100px;
+}

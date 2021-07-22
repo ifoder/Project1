@@ -1,0 +1,12 @@
+<div class="container">
+  <mat-expansion-panel *ngFor="let test of tests">
+    <mat-expansion-panel-header>
+      <mat-panel-title>{{ test.title }}</mat-panel-title>
+    </mat-expansion-panel-header>
+    <mat-divider></mat-divider><br />
+    <p>{{ test.description | slice: 0:100 }}...</p>
+    <button mat-raised-button color="primary" (click)="openDialog(test)">
+      Start
+    </button>
+  </mat-expansion-panel>
+</div>

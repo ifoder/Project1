@@ -1,0 +1,36 @@
+<mat-tab-group
+  [selectedIndex]="selected.value"
+  (selectedIndexChange)="selected.setValue($event)"
+>
+  <div class="tab__container">
+    <mat-tab label="Categories">
+      <categories-admin></categories-admin>
+    </mat-tab>
+    <mat-tab label="Tests">
+      <tests-admin (question)="fromT($event)"></tests-admin>
+    </mat-tab>
+
+    <mat-tab *ngFor="let tab of tabs; let index = index" [label]="tab">
+      <div class="header">
+        {{ type[index] }}
+        <button
+          mat-raised-button
+          color="warn"
+          class="example-delete-tab-button"
+          (click)="removeTab(index)"
+        >
+          Delete Tab
+        </button>
+      </div>
+      <ng-template [ngIf]="type[index] == 'Questions'">
+        <questions-admin
+          (answer)="fromQ($event)"
+          [id]="ids[index]"
+        ></questions-admin>
+      </ng-template>
+      <ng-template [ngIf]="type[index] == 'Answers'">
+        <answers-admin [id]="ids[index]"></answers-admin>
+      </ng-template>
+    </mat-tab>
+  </div>
+</mat-tab-group>
