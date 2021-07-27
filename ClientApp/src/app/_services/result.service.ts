@@ -1,8 +1,8 @@
 ﻿import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
+import { UserScore } from '../_models';
 
-import { environment } from '@environments/environment';
-import { User, Test, Question, UserScore } from '@app/_models';
 
 @Injectable({ providedIn: 'root' })
 export class ResultService {

@@ -6,7 +6,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 
-import { AuthenticationService } from '@app/_services';
+import { AuthenticationService } from 'src/app/_services';
 
 @Component({ templateUrl: 'reg.component.html' })
 export class RegComponent implements OnInit {

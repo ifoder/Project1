@@ -1,8 +1,8 @@
 import { AnswerService } from './../../_services/answer.service';
 import { QuestionService } from '../../_services/question.service';
-import { Test, Question } from '@app/_models';
+import { Test, Question } from 'src/app/_models';
 import { ActivatedRoute, Router } from '@angular/router';
-import { TestsService } from '@app/_services';
+import { TestsService } from 'src/app/_services';
 import {
   Component,
   Input,

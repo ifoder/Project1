@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using WebApi.Entities;
 using System;
+using Microsoft.AspNetCore.SpaServices.AngularCli;
 
 namespace WebApi
 {
@@ -52,7 +53,10 @@ namespace WebApi
                     ClockSkew = TimeSpan.Zero
                 };
             });
-
+            services.AddSpaStaticFiles(configuration =>
+            {
+                configuration.RootPath = "ClientApp/dist";
+            });
             services.AddScoped<IUserService, UserService>();
         }
 
@@ -73,6 +77,12 @@ namespace WebApi
             app.UseAuthorization();
 
             app.UseEndpoints(x => x.MapControllers());
+            app.UseDeveloperExceptionPage();
+            app.UseSpa(spa =>
+            {
+                spa.Options.SourcePath = "ClientApp";
+                spa.UseAngularCliServer(npmScript: "start");
+            });
         }
     }
 }

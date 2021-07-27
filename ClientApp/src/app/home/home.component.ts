@@ -5,10 +5,10 @@ import { ResultService } from './../_services/result.service';
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { first } from 'rxjs/operators';
 
-import { User, Test } from '@app/_models';
-import { UserService, TestsService } from '@app/_services';
+import { UserService, TestsService } from 'src/app/_services';
 import { MatSort, Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { Test, User } from '../_models';
 export interface Dessert {
   calories: number;
   carbs: number;

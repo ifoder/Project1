@@ -4,7 +4,7 @@ import { Test } from './../_models/test';
 import { TestsService } from './../_services/tests.service';
 import { UserScore } from './../_models/user-score';
 import { Component, Input } from '@angular/core';
-import { User } from '@app/_models';
+import { User } from 'src/app/_models';
 
 @Component({
   selector: 'result-page',

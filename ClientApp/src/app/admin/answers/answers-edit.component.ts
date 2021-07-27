@@ -1,10 +1,9 @@
 import { AnswerService } from '../../_services/answer.service';
 import { QuestionService } from '../../_services/question.service';
-import { Test, Answer, Question } from '@app/_models';
+import { Test, Answer, Question } from 'src/app/_models';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MatTable } from '@angular/material/table';
-import { core } from '@angular/compiler';
 
 @Component({
   selector: 'answers-admin',
