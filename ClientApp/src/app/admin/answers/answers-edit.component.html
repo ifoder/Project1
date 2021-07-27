@@ -1,6 +1,6 @@
 <mat-card>
   <mat-card-header>
-    <mat-card-title>{{ question.question }}</mat-card-title>
+    <mat-card-title>{{ question?.question }}</mat-card-title>
   </mat-card-header>
 </mat-card>
 <br />
@@ -64,7 +64,7 @@
       </div>
 
       <p *ngIf="!isEdit && !newRows.has(element)">
-        {{ element.answer }}
+        {{ element?.answer }}
       </p>
     </td>
   </ng-container>
@@ -81,7 +81,7 @@
           >Checked</mat-checkbox
         >
       </section>
-      {{ element.correct }}
+      {{ element?.correct }}
     </td>
   </ng-container>
 

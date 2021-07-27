@@ -31,7 +31,6 @@ export class CategoriesEditComponent implements OnInit {
 
   ngOnInit() {
     this.loadCategories();
-    console.log(this.user);
   }
 
   clear() {

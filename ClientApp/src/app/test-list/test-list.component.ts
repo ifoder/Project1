@@ -16,6 +16,7 @@ export class TestListComponent {
   loading = false;
   testList = 'test-list';
   tests: Test[];
+  load = true;
 
   constructor(
     public dialog: MatDialog,
@@ -33,7 +34,6 @@ export class TestListComponent {
     });
 
     dialogRef.afterClosed().subscribe((result: boolean) => {
-      console.log('The dialog was closed ', result);
       if (result == true) {
         this.router.navigate(['/play', test.id]);
       }
@@ -42,7 +42,6 @@ export class TestListComponent {
 
   ngOnInit() {
     this.getTestsByCategoryId();
-    console.log(this.tests);
   }
 
   getTestsByCategoryId() {
@@ -50,7 +49,9 @@ export class TestListComponent {
       .getAllTests()
       .subscribe(
         (data: Test[]) =>
-          (this.tests = data.filter((x) => x.categoryId == this.id))
-      );
+        {
+          this.tests = data.filter((x) => x.categoryId == this.id);
+          this.load = false;
+        });
   }
 }

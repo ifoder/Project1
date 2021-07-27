@@ -1,10 +1,10 @@
 <mat-card>
   <mat-card-header>
-    <mat-card-title>{{ test.title }}</mat-card-title>
+    <mat-card-title>{{ test?.title }}</mat-card-title>
   </mat-card-header>
   <mat-card-content>
     <p>
-      {{ test.description }}
+      {{ test?.description }}
     </p>
   </mat-card-content>
 </mat-card>
@@ -69,7 +69,7 @@
       </div>
 
       <p *ngIf="!isEdit && !newRows.has(element)">
-        {{ element.question }}
+        {{ element?.question }}
       </p>
     </td>
   </ng-container>

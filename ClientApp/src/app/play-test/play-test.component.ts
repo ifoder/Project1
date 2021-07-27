@@ -60,7 +60,6 @@ export class PlayTestComponent implements OnInit {
       this.userScore.time = this.time;
       this.userScore.userId = this.user.id;
       this.userScore.testId = this.test.id;
-      console.log(this.userScore);
 
       this.resultPage = true;
     } else {
@@ -78,8 +77,8 @@ export class PlayTestComponent implements OnInit {
       this.setProgress();
 
       this.question = this.questions.shift();
+      if(this.question)
       this.getAnswers(this.question);
-      console.log(this.progress);
     });
   }
 

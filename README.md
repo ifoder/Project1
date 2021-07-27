@@ -16,7 +16,7 @@
 
 `dotnet run`
 
-🚀  http://localhost:4200/  🚀
+
 
 <b>admin</b> have mini-CMS😅, route "SETTING" at nav menu.
 

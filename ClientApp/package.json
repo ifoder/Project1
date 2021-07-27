@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "echo hello && ng serve",
+    "start": "echo hello && ng serve -o",
     "build": "ng build"
   },
   "private": true,

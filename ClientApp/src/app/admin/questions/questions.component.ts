@@ -43,7 +43,7 @@ export class QuestionsEditComponent implements OnInit {
   }
   ngOnInit() {
     this.loadTest();
-    this.loadQuestion();
+
   }
 
   clear() {
@@ -53,22 +53,28 @@ export class QuestionsEditComponent implements OnInit {
   }
 
   loadTest() {
-    this.testService
-      .getAllTests()
-      .subscribe(
-        (data: Test[]) => (this.test = data.find((x) => x.id == this.id))
-      );
+    if (this.id) {
+      this.testService
+        .getAllTests()
+        .subscribe(
+          (data: Test[]) => {
+            this.test = data.find((x) => x.id == this.id);
+          this.loadQuestion();
+
+          }
+        );
+    }
     this.clear();
   }
 
   loadQuestion() {
-    this.questionService
-      .getAllQuestions()
-      .subscribe(
-        (data: Question[]) =>
-          (this.questions = data.filter((x) => x.testId == this.test.id))
-      );
-    this.clear();
+
+      this.questionService
+        .getAllQuestions()
+        .subscribe(
+          (data: Question[]) =>
+            (this.questions = data.filter((x) => x.testId == this.test.id))
+        );
   }
 
   clickAdd() {

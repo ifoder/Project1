@@ -78,7 +78,6 @@ export class AnswersEditComponent implements OnInit {
         this.answer.answer = m.answer;
         this.answer.correct = m.correct;
         this.answer.questionId = this.id;
-        console.log(this.answer);
 
         this.answerService
           .createAnswer(this.answer)

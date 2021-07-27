@@ -12,11 +12,11 @@ namespace WebApi.Controllers
 {
     [Route("api/categories")]
     [ApiController]
-    public class UserScoreController : ControllerBase
+    public class CategoriesController : ControllerBase
     {
          DataContext db;
 
-        public UserScoreController(DataContext context)
+        public CategoriesController(DataContext context)
         {
             db = context;
             if (!db.Categories.Any())

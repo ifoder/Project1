@@ -37,7 +37,6 @@ export class AdminComponent {
   }
 
   fromQ(question: Question) {
-    console.log(question);
 
     this.tabs.push('Answer ID: ' + question.id);
     this.type.push('Answers');

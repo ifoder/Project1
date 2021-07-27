@@ -25,7 +25,7 @@ namespace WebApi
 
         public void ConfigureServices(IServiceCollection services)
         {
-            string connectionString = "Server=(localdb)\\mssqllocaldb;Database=testbytestsdb;Trusted_Connection=True;";
+            string connectionString = this.Configuration.GetConnectionString("Default");
             services.AddDbContext<DataContext>(options => options.UseSqlServer(connectionString));
 
             services.AddControllers();

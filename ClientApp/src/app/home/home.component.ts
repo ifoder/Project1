@@ -23,6 +23,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   userScores: UserScore[];
   user: User;
   tests: Test[];
+  load = true;
 
   sortedData: UserScore[];
   @ViewChild(MatSort) sort: MatSort;
@@ -51,7 +52,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
     this.resultService.getAllScores().subscribe((data: UserScore[]) => {
       this.dataSource.data = data as UserScore[];
       this.userScores = data.filter((m) => m.userId == this.user.id);
-      console.log(this.userScores);
+      this.load = false;
     });
   }
 
@@ -60,8 +61,13 @@ export class HomeComponent implements OnInit, AfterViewInit {
   }
 
   getUserName(id: number) {
+    if(this.users) {
     let u = this.users.find((m) => m.id == id);
+
     return u.username;
+    }
+    return id;
+
   }
 
   getTime(t: number) {
